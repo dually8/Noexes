@@ -1,24 +1,23 @@
 package me.mdbell.noexs.ui.controllers;
 
-import com.google.gson.GsonBuilder;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
 import me.mdbell.javafx.control.AddressSpinner;
 import me.mdbell.javafx.control.HexSpinner;
+import me.mdbell.noexs.ui.NoexesFiles;
 import me.mdbell.noexs.ui.Settings;
 import me.mdbell.noexs.ui.services.PointerSearchResult;
 import me.mdbell.noexs.ui.services.PointerSearchService;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PointerSearchController implements IController {
 
@@ -183,6 +182,42 @@ public class PointerSearchController implements IController {
     public void onCancelAction(ActionEvent event) {
         if (searchService.cancel()) {
             toggleInput(false);
+        }
+    }
+
+    public void onExportListClicked(ActionEvent event) {
+        System.out.println("clicked");
+        int size = resultList.getItems().size();
+        Long relAddress = relativeAddress.getValue();
+        System.out.println("Size: " + size + "; relAddress: " + relAddress);
+        if (resultList.getItems().size() > 0 && relativeAddress.getValue() != null) {
+            System.out.println("we have items to export");
+            List<PointerSearchResult> items = resultList
+                    .getItems()
+                    .stream()
+                    .distinct()
+                    .collect(Collectors.toList());
+            System.out.println("New size: " + items.size());
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.append("-- List of Addresses --").append("\n\n");
+            for (PointerSearchResult item:
+                 items) {
+                String formatted = item.formatted(relativeAddress.getValue());
+                strBuilder.append(formatted).append("\n");
+                System.out.println(formatted);
+            }
+            try {
+                File tmpFile = NoexesFiles.createTempFile("txt");
+                if (!tmpFile.exists()) {
+                    throw new IOException("tmp file doesn't exist");
+                }
+                RandomAccessFile randomAccessFile = new RandomAccessFile(tmpFile, "rw");
+                randomAccessFile.seek(0);
+                randomAccessFile.writeUTF(strBuilder.toString());
+                randomAccessFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

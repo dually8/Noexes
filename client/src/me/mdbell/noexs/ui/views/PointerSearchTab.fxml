@@ -11,7 +11,7 @@
 <?import me.mdbell.javafx.control.AddressSpinner?>
 <?import me.mdbell.javafx.control.HexSpinner?>
 
-<AnchorPane prefHeight="470.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mdbell.noexs.ui.controllers.PointerSearchController">
+<AnchorPane prefHeight="470.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.mdbell.noexs.ui.controllers.PointerSearchController">
    <children>
       <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="23.0" prefHeight="108.0" prefWidth="992.0" text="Input">
         <content>
@@ -49,6 +49,7 @@
                   <Label layoutX="610.0" layoutY="256.0" text="Min:" />
                   <AddressSpinner fx:id="relativeAddress" editable="true" layoutX="393.0" layoutY="252.0" />
                   <Label layoutX="364.0" layoutY="256.0" text="main:" />
+                  <Button fx:id="exportButton" layoutX="906.0" layoutY="266.0" mnemonicParsing="false" onAction="#onExportListClicked" text="Export List" />
                </children></AnchorPane>
         </content>
       </TitledPane>
