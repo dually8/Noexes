@@ -384,6 +384,7 @@ public class MainController implements NetworkConstants, IController {
             connectionService.setType(connectionType.getSelectionModel().getSelectedItem());
             connectionService.setHost(ipAddr.getText());
             connectionService.setPort(DEFAULT_PORT);
+            System.out.println("Restart service...");
             connectionService.restart();
         }
         ipAddr.setDisable(disabled);

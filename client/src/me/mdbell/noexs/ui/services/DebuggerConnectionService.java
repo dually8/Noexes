@@ -4,8 +4,12 @@ import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import me.mdbell.noexs.core.IConnection;
 import me.mdbell.noexs.io.net.SocketConnection;
+import me.mdbell.noexs.io.usb.UsbConnection;
+import me.mdbell.noexs.io.usb.UsbLowLevelConnection;
+import me.mdbell.noexs.io.usb.UsbUtils;
 import me.mdbell.noexs.ui.models.ConnectionType;
 
+import javax.usb.UsbDevice;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
@@ -37,6 +41,20 @@ public class DebuggerConnectionService extends ScheduledService<IConnection> {
                         s.connect(addr, timeout);
                         s.setTcpNoDelay(true);
                         return new SocketConnection(s);
+                    }
+                };
+            case USB:
+                return new Task<>() {
+                    @Override
+                    protected IConnection call() throws Exception {
+                        updateMessage("Connecting via USB...");
+                        UsbDevice nsDevice = UsbUtils.findDevice(0x057e, 0x2000);
+                        if (nsDevice != null) {
+                            System.out.println("Found nintendo switch!");
+                            return new UsbConnection(nsDevice);
+                        }
+//                        return new UsbLowLevelConnection();
+                        throw new UnsupportedOperationException("Couldn't find nintendo switch");
                     }
                 };
             default:

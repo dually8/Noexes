@@ -6,7 +6,7 @@ import java.util.List;
 public final class UsbUtils {
 
     private static final int SWITCH_VENDOR_ID = 0x57E;
-    private static final int SWITCH_PROD_ID = 0x3000;
+    private static final int SWITCH_PROD_ID = 0x3000; // Apparently it can be 0x2000 also
 
     private UsbUtils(){
 
@@ -23,9 +23,11 @@ public final class UsbUtils {
     //Adapted from usb4java examples
     public static UsbDevice findDevice(UsbHub hub, short vendorId, short productId)
     {
-        for (UsbDevice device : (List<UsbDevice>) hub.getAttachedUsbDevices())
+        List<UsbDevice> devices = hub.getAttachedUsbDevices();
+        for (UsbDevice device : devices)
         {
             UsbDeviceDescriptor desc = device.getUsbDeviceDescriptor();
+            System.out.println("USB Device: " + desc.idVendor() + " : " + desc.idProduct());
             if (desc.idVendor() == vendorId && desc.idProduct() == productId) return device;
             if (device.isUsbHub())
             {
