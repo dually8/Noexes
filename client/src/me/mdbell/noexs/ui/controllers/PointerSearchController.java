@@ -15,6 +15,7 @@ import me.mdbell.noexs.ui.services.PointerSearchService;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -191,6 +192,7 @@ public class PointerSearchController implements IController {
         Long relAddress = relativeAddress.getValue();
         System.out.println("Size: " + size + "; relAddress: " + relAddress);
         if (resultList.getItems().size() > 0 && relativeAddress.getValue() != null) {
+            mc.setStatus("Exporting pointer list. Please wait...");
             System.out.println("we have items to export");
             List<PointerSearchResult> items = resultList
                     .getItems()
@@ -198,12 +200,11 @@ public class PointerSearchController implements IController {
                     .distinct()
                     .collect(Collectors.toList());
             System.out.println("New size: " + items.size());
-            StringBuilder strBuilder = new StringBuilder();
-            strBuilder.append("-- List of Addresses --").append("\n\n");
+            List<String> addresses = new ArrayList<String>();
             for (PointerSearchResult item:
                  items) {
                 String formatted = item.formatted(relativeAddress.getValue());
-                strBuilder.append(formatted).append("\n");
+                addresses.add(formatted);
                 System.out.println(formatted);
             }
             try {
@@ -213,9 +214,15 @@ public class PointerSearchController implements IController {
                 }
                 RandomAccessFile randomAccessFile = new RandomAccessFile(tmpFile, "rw");
                 randomAccessFile.seek(0);
-                randomAccessFile.writeUTF(strBuilder.toString());
+                for(String addr : addresses) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    stringBuilder.append(addr).append("\n");
+                    randomAccessFile.write(stringBuilder.toString().getBytes(Charset.forName("UTF8")));
+                }
                 randomAccessFile.close();
+                mc.setStatus("Exported list of pointers to " + tmpFile.getPath());
             } catch (IOException e) {
+                mc.setStatus("Error exporting pointer list :(");
                 e.printStackTrace();
             }
         }

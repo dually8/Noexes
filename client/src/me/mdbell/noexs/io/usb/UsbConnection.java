@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UsbConnection implements IConnection {
 
-    private static final byte USB_INTERFACE = (byte) 0;// 1;
+    private static final byte USB_INTERFACE = (byte) 0;
 
     private static final byte READ_ENDPOINT = (byte) 0x83;
     private static final byte WRITE_ENDPOINT = (byte) 0x03;
@@ -21,7 +21,6 @@ public class UsbConnection implements IConnection {
     private UsbInterface iface;
     private UsbEndpoint read, write;
     private UsbPipe readPipe, writePipe;
-    private DeviceHandle handle;
 
     private List<UsbIrp> outputIrps = new LinkedList<>();
 
@@ -31,17 +30,20 @@ public class UsbConnection implements IConnection {
     }
 
     private void init() throws UsbClaimException, UsbException, UsbNotActiveException, UsbDisconnectedException {
-        cfg = device.getActiveUsbConfiguration();
-        iface = cfg.getUsbInterface(USB_INTERFACE);
-        //iface.claim();
-        iface.claim(usbInterface -> true);
-        read = iface.getUsbEndpoint(READ_ENDPOINT);
-        write = iface.getUsbEndpoint(WRITE_ENDPOINT);
-        readPipe = read.getUsbPipe();
-        writePipe = write.getUsbPipe();
-
-        readPipe.open();
-        writePipe.open();
+        try {
+            cfg = device.getActiveUsbConfiguration();
+            iface = cfg.getUsbInterface(USB_INTERFACE);
+            iface.claim();
+            read = iface.getUsbEndpoint(READ_ENDPOINT);
+            write = iface.getUsbEndpoint(WRITE_ENDPOINT);
+            readPipe = read.getUsbPipe();
+            writePipe = write.getUsbPipe();
+            readPipe.open();
+            writePipe.open();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            throw ex;
+        }
     }
 
     @Override
