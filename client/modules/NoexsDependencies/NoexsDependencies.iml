@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:6.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:usb4java:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:linux-x86:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:linux-x86_64:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:linux-arm:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:windows-x86:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:windows-x86_64:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:osx-x86:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:osx-x86_64:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:libusb4java:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.usb4java:usb4java-javax:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.usb:usb-api:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:11" level="project" />
+  </component>
+</module>

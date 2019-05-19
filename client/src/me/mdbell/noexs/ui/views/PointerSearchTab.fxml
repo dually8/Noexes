@@ -17,9 +17,9 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="79.0" prefWidth="990.0">
                <children>
-                  <TextField fx:id="dumpFilePath" editable="false" layoutX="71.0" layoutY="14.0" prefHeight="25.0" prefWidth="773.0" />
+                  <TextField fx:id="dumpFilePath" editable="false" layoutX="77.0" layoutY="14.0" prefHeight="25.0" prefWidth="767.0" />
                   <Button fx:id="dumpFileButton" layoutX="921.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBrowseDumpFile" text="Browse" />
-                  <Label layoutX="14.0" layoutY="18.0" text="Dump FIle:" />
+                  <Label layoutX="14.0" layoutY="18.0" text="Dump File:" />
                   <Label layoutX="458.0" layoutY="50.0" text="Max Depth:" />
                   <Spinner fx:id="depthSpinner" layoutX="519.0" layoutY="46.0">
                   </Spinner>
@@ -41,7 +41,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="resultText" editable="false" layoutX="14.0" layoutY="252.0" prefHeight="25.0" prefWidth="347.0" />
-                  <ListView fx:id="resultList" layoutX="14.0" layoutY="14.0" prefHeight="232.0" prefWidth="966.0" />
+                  <ListView fx:id="resultList" layoutX="14.0" layoutY="14.0" prefHeight="202.0" prefWidth="966.0" />
                   <CheckBox fx:id="filterCheckbox" layoutX="555.0" layoutY="256.0" mnemonicParsing="false" text="Filter" />
                   <AddressSpinner fx:id="filterMaxAddress" disable="true" editable="true" layoutX="827.0" layoutY="252.0" />
                   <AddressSpinner fx:id="filterMinAddress" disable="true" editable="true" layoutX="643.0" layoutY="252.0" />
@@ -49,7 +49,7 @@
                   <Label layoutX="610.0" layoutY="256.0" text="Min:" />
                   <AddressSpinner fx:id="relativeAddress" editable="true" layoutX="393.0" layoutY="252.0" />
                   <Label layoutX="364.0" layoutY="256.0" text="main:" />
-                  <Button fx:id="exportButton" layoutX="906.0" layoutY="266.0" mnemonicParsing="false" onAction="#onExportListClicked" text="Export List" />
+                  <Button fx:id="exportButton" layoutX="905.0" layoutY="221.0" mnemonicParsing="false" onAction="#onExportListClicked" text="Export List" />
                </children></AnchorPane>
         </content>
       </TitledPane>

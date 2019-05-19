@@ -7,7 +7,7 @@ A multi-platform graphical remote debugger for the Nintendo Switch.
 ### Pre-Requisites
 
 * [Hekate](https://github.com/CTCaer/hekate) on your switch
-* [Java 10](https://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html) installed on your PC
+* [Java 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) installed on your PC
 
 ### Downloading
 
@@ -46,6 +46,14 @@ If you still have problems please double check that you're running at least Java
 
 ## Building from Source
 
+**TODO**
+
+- Download the [JavaFX 11 SDK](https://gluonhq.com/products/javafx/).
+- Export the zip to any place of your choosing.
+- Add the JavaFX SDK to your path
+  - e.g. `set PATH_TO_FX="path\to\javafx-sdk-12.0.1\lib"`
+- Add this to the VM options for the NoexsApplication: `--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml`
+  - For more help, check out the [JavaFX docs](https://openjfx.io/openjfx-docs/#install-javafx).
 
 ### Building the Client
 
