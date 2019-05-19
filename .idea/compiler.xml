@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="NoexsDependencies" />
+        <module name="Utils" />
+        <module name="JNoexsClient" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="JNoexsClient" target="11" />
       <module name="NoexsDependencies" target="1.5" />
+      <module name="Utils" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

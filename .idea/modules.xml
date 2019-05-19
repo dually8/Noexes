@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/client/JNoexsClient.iml" filepath="$PROJECT_DIR$/client/JNoexsClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client/modules/NoexsDependencies/NoexsDependencies.iml" filepath="$PROJECT_DIR$/client/modules/NoexsDependencies/NoexsDependencies.iml" />
       <module fileurl="file://$PROJECT_DIR$/client/modules/Utils/Utils.iml" filepath="$PROJECT_DIR$/client/modules/Utils/Utils.iml" />
     </modules>
   </component>

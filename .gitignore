@@ -72,3 +72,6 @@ fabric.properties
 
 # For when you're running it via IntelliJ
 tmp/
+
+client/target/
+client/modules/Utils/target/

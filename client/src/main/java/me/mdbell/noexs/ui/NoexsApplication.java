@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import me.mdbell.noexs.misc.OffsetList;
 import me.mdbell.noexs.ui.controllers.MainController;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ public class NoexsApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(("views/Main.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
         Parent root = loader.load();
         stage.setResizable(false);
         stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
